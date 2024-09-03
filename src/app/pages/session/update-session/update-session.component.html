@@ -1,0 +1,26 @@
+<form>
+  <mat-card>
+    <mat-card-header>
+      <h1>Modifier la session de formation</h1>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Validation du champ noms  -->
+      <div class="input">
+        <mat-form-field>
+          <mat-label>Date de debut</mat-label>
+          <input
+            formControlName="dateDebut"
+            matInput
+            placeholder="Ex: Mai 2024"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <div class="button">
+      <button type="submit">Enregistrer</button>
+      <button (click)="closePopup()">Annuler</button>
+    </div>
+  </mat-card>
+</form>

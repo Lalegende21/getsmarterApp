@@ -1,13 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>GetsmarterApp</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>GetsmarterApp</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="./assets/images/icon-site.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/def8d2ac0a.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+
+    <!-- style du loader  -->
+    <style>
+      /* Styles pour le loader */
+      #global-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(5, 5, 5, 0.623);
+        z-index: 11111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* HTML: <div class="loader"></div> */
+      .loader {
+        width: 80px;
+        aspect-ratio: 1;
+        display: grid;
+        border-radius: 50%;
+        background: linear-gradient(
+              0deg,
+              /* rgb(0 0 0/50%) 30%, */
+              rgba(163, 252, 255, 0.5) 30%,
+              #0000 0 70%,
+              rgb(163 252 255/100%) 0
+            )
+            50%/8% 100%,
+          linear-gradient(
+              90deg,
+              /* rgb(0 0 0/25%) 30%, */
+              rgba(163, 252, 255, 0.5) 30%,
+              #0000 0 70%,
+              rgb(163 252 255/75%) 0
+            )
+            50%/100% 8%;
+        background-repeat: no-repeat;
+        animation: l23 1s infinite steps(12);
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        grid-area: 1/1;
+        border-radius: 50%;
+        background: inherit;
+        opacity: 0.915;
+        transform: rotate(30deg);
+      }
+      .loader::after {
+        opacity: 0.83;
+        transform: rotate(60deg);
+      }
+      @keyframes l23 {
+        100% {
+          transform: rotate(1turn);
+        }
+      }
+
+      /* .spinner {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        animation: spin .5s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      } */
+    </style>
+  </head>
+  <body>
+    <div id="global-loader">
+      <!-- <div class="spinner"></div> -->
+      <div class="loader"></div>
+    </div>
+    <app-root></app-root>
+  </body>
 </html>
