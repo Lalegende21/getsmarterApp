@@ -1,12 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-buttton',
   standalone: true,
   imports: [],
   template: `<button class="add">
-    <span>+</span><span class="new">{{ buttonText }}</span>
-  </button>`,
+      <span>+</span><span class="new">{{ buttonText }}</span>
+    </button>`,
   styles: ` 
   @import "../../../styles.scss";
   .add {

@@ -68,6 +68,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'professeur/id',
+    loadComponent: () =>
+      import('./pages/professeur/see-professor/see-professor.component').then(
+        (m) => m.SeeProfessorComponent
+      ),
+  },
+  {
     path: 'tuteur',
     loadComponent: () =>
       import('./pages/tuteur/tuteur.component').then((m) => m.TuteurComponent),

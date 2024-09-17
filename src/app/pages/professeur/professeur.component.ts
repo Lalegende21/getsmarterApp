@@ -3,9 +3,9 @@ import { Component, HostListener } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AddButttonComponent } from '../../components/add-buttton/add-buttton.component';
 import { MatDialog } from '@angular/material/dialog';
-import { AddSessionComponent } from '../session/add-session/add-session.component';
 import { AddProfessorComponent } from './add-professor/add-professor.component';
 import { UpdateProfessorComponent } from './update-professor/update-professor.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professeur',
@@ -17,7 +17,7 @@ import { UpdateProfessorComponent } from './update-professor/update-professor.co
 export class ProfesseurComponent {
   isModalVisible: boolean[] = [false, false, false, false, false];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private route: Router) {}
 
   toggleModal(index: number, event: Event) {
     event.stopPropagation();
@@ -43,7 +43,9 @@ export class ProfesseurComponent {
   }
 
   //Methode pour afficher les informations du professeur
-  consulterProfessor() {}
+  consulterProfessor() {
+    this.route.navigateByUrl("professeur/id");
+  }
 
   //Methode pour ouvrir le modal d'ajout d'un professeur
   addProfessor() {
