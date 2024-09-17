@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-add-buttton',
   standalone: true,
   imports: [],
   template: `<button class="add">
-    <span>+</span><span class="new">Ajouter une session</span>
+    <span>+</span><span class="new">{{ buttonText }}</span>
   </button>`,
   styles: ` 
   @import "../../../styles.scss";
@@ -55,4 +55,6 @@ import { Component } from '@angular/core';
   }
   `,
 })
-export class AddButttonComponent {}
+export class AddButttonComponent {
+  @Input() buttonText: string = 'Texte';
+}

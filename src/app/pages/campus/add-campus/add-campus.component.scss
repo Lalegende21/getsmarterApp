@@ -4,6 +4,7 @@ mat-card {
   padding: 2rem;
   max-height: 70vh;
   overflow: auto;
+  position: relative;
 
   mat-card-header {
     h1 {
@@ -64,8 +65,7 @@ mat-card {
   }
 }
 
-
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
   mat-card {
     padding: 1rem;
     mat-card-header {

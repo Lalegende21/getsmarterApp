@@ -47,7 +47,7 @@
   </div>
   <!-- end section1  -->
 
-  <!-- start section1  -->
+  <!-- start section2  -->
   <div class="second-section">
     <div class="sort">
       <h2>Rechercher par:</h2>
@@ -59,18 +59,23 @@
         <div class="option">
           <div class="label1">
             <label for="check"
-              ><mat-icon>sort_by_alpha</mat-icon
+              ><mat-icon>calendar_month</mat-icon
               ><span>Date de debut</span></label
             >
           </div>
           <div class="input1">
             <div>
               <mat-icon>search</mat-icon>
-              <input type="search" name="#" id="#" placeholder="Date de debut"/>
+              <input
+                type="search"
+                name="#"
+                id="#"
+                placeholder="Date de debut"
+              />
             </div>
           </div>
         </div>
-        
+
         <!-- second option  -->
         <input type="checkbox" name="#" id="check2" />
         <div class="option">
@@ -83,7 +88,12 @@
           <div class="input2">
             <div>
               <mat-icon>search</mat-icon>
-              <input type="search" name="#" id="input2" placeholder="Date d'enregistrement"/>
+              <input
+                type="search"
+                name="#"
+                id="input2"
+                placeholder="Date d'enregistrement"
+              />
             </div>
           </div>
         </div>
@@ -131,7 +141,16 @@
                   </button>
                 </div>
                 <div class="text">
-                  <button matTooltip="Supprimer">
+                  <button (click)="onOptionSelected(0, $event)">
+                    <img
+                      src="../../../assets/images/image-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="image">Inserer image</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(0, $event)">
                     <img
                       src="../../../assets/images/delete-svgrepo-com.svg"
                       alt="delete-svgrepo-com.svg"
@@ -313,8 +332,11 @@
       <button><mat-icon>arrow_forward_ios</mat-icon></button>
     </div>
   </div>
+  <!-- end section2  -->
 
   <!-- add button session  -->
-  <app-add-buttton (click)="addSession()"></app-add-buttton>
-  <!-- end section1  -->
+  <app-add-buttton
+    [buttonText]="'Ajouter une session'"
+    (click)="addSession()"
+  ></app-add-buttton>
 </section>

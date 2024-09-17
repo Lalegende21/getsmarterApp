@@ -141,6 +141,11 @@ section {
                 cursor: pointer;
               }
             }
+
+            &:hover {
+              background-color: $bleu-pale;
+              color: $white;
+            }
           }
 
           .input1,
@@ -295,8 +300,11 @@ section {
                 }
               }
 
+              .image {
+                color: $marron-brun;
+              }
               .update {
-                color: $secondary;
+                color: $logo-color;
               }
               .delete {
                 color: $danger;
@@ -352,12 +360,10 @@ section {
     }
   }
   /************* end second section ******************/
-
-  /************* start add button ******************/
 }
 
 /*************************** media query **************************/
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1600px) {
   section {
     .first-section {
       .second-bloc {

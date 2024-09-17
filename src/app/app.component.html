@@ -38,9 +38,32 @@
     </button>
 
     <!-- image du profil  -->
-    <a routerLink="/profil" matTooltip="Profil">
-      <img src="../assets/images/freelancer.png" alt="couple.webp" />
-    </a>
+
+    <div class="profil" (click)="toggleModal($event)">
+      <div class="image">
+        <img src="../assets/images/freelancer.png" alt="couple.webp" />
+      </div>
+
+      <ul
+        class="list"
+        [ngClass]="{ show: isModalVisible }"
+        (click)="$event.stopPropagation()"
+      >
+        <li (click)="onOptionSelected($event)">
+          <a routerLink="/profil"
+            ><mat-icon>person</mat-icon><span>Profil</span></a
+          >
+        </li>
+        <li (click)="onOptionSelected($event)">
+          <a routerLink="/profil"
+            ><mat-icon>settings</mat-icon><span>Paramètres</span></a
+          >
+        </li>
+        <button (click)="onOptionSelected($event)">
+          <mat-icon>logout</mat-icon><span>Deconnexion</span>
+        </button>
+      </ul>
+    </div>
   </div>
 </mat-toolbar>
 
@@ -90,11 +113,33 @@
         ><mat-icon>supervisor_account</mat-icon>{{ "Tuteur" | translate }}</a
       >
       <a routerLink="/statistique" routerLinkActive="router-link-active"
-        ><mat-icon>bar_chart_4_bars</mat-icon>{{ "Statistiques" | translate }}</a
+        ><mat-icon>bar_chart_4_bars</mat-icon
+        >{{ "Statistiques" | translate }}</a
       >
       <a routerLink="/liste-utilisateurs" routerLinkActive="router-link-active"
         ><mat-icon>group</mat-icon>{{ "Liste d'utilisateurs" | translate }}</a
       >
+      <div class="list">
+        <input type="checkbox" id="dropdown" />
+        <label for="dropdown">
+          <span><mat-icon>settings</mat-icon> Test</span
+          ><span><mat-icon>chevron_right</mat-icon></span>
+        </label>
+        <ul>
+          <li>
+            <a routerLink="/1" routerLinkActive="router-link-active">Test 1</a>
+          </li>
+          <li>
+            <a routerLink="/2" routerLinkActive="router-link-active">Test 2</a>
+          </li>
+          <li>
+            <a routerLink="/3" routerLinkActive="router-link-active">Test 3</a>
+          </li>
+          <li>
+            <a routerLink="/4" routerLinkActive="router-link-active">Test 4</a>
+          </li>
+        </ul>
+      </div>
     </ul>
   </mat-sidenav>
 

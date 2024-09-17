@@ -25,6 +25,13 @@ export class SessionComponent {
     );
   }
 
+  onOptionSelected(index: number, event: Event) {
+    event.stopPropagation(); // Empêche la propagation du clic
+    this.isModalVisible[index] = false; // Ferme le modal correspondant
+    console.log('Option sélectionnée dans le modal', index);
+  }
+  
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
     const target = event.target as HTMLElement;

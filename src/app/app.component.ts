@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {
   NavigationEnd,
   Router,
@@ -51,7 +51,7 @@ export class AppComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private translate: TranslateService,
-    private router: Router,
+    private router: Router
   ) {}
 
   changeLang(selectedLang: string) {
@@ -65,7 +65,7 @@ export class AppComponent {
       if (loader) {
         loader.style.display = 'none';
       }
-    }, 5000);
+    }, 1000);
 
     this.breakpointObserver
       .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
@@ -92,6 +92,7 @@ export class AppComponent {
       });
   }
 
+  //Gerer le basculement de la sidenav du dashboard
   toggleSidenav(): void {
     if (this.isLargeScreen) {
       this.isSidenavOpen = !this.isSidenavOpen;
@@ -112,5 +113,35 @@ export class AppComponent {
     this.selectedCountry = country;
     this.isActive = false;
     this.changeLang(country);
+  }
+
+  /******************* AFFICHER ET MASQUER LE MODAL DES OPTIONS DU PROFILS ************************/
+  isModalVisible: boolean = false;
+
+  toggleModal(event: Event) {
+    event.stopPropagation(); // Empêche la propagation du clic pour éviter de fermer la modal immédiatement
+    this.isModalVisible = !this.isModalVisible;
+  }
+
+  closeModal() {
+    this.isModalVisible = false;
+  }
+
+  onOptionSelected(event: Event) {
+    console.log('Option sélectionnée');
+    this.closeModal(); // Ferme le modal après avoir sélectionné une option
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+
+    // Vérifiez si le clic s'est produit à l'intérieur de la modal ou du bouton "more-icon"
+    const clickedInsideModal = target.closest('.list');
+    const clickedOnButton = target.closest('.profil');
+
+    if (!clickedInsideModal && !clickedOnButton) {
+      this.isModalVisible = false;
+    }
   }
 }

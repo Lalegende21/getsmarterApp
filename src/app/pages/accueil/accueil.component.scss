@@ -146,7 +146,7 @@ section {
 }
 
 /***************************** MEDIA QUERY ******************************/
-@media screen and (max-width: 1390px) {
+@media screen and (max-width: 1600px) {
   section {
     .first-section {
       .first-bloc {
@@ -159,11 +159,7 @@ section {
         }
       }
     }
-  }
-}
 
-@media screen and (max-width: 1280px) {
-  section {
     .second-section {
       grid-template-columns: repeat(2, 1fr);
 

@@ -1,7 +1,7 @@
 @import "../../../../styles.scss";
 
 mat-card {
-  padding: 2rem 4rem;
+  padding: 2rem;
   max-height: 90vh;
   overflow: auto;
   position: relative;
@@ -30,6 +30,7 @@ mat-card {
     justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
+    padding: 0 1rem;
 
     button {
       padding: 1rem 2rem;
