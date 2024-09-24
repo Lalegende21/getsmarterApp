@@ -80,6 +80,11 @@ export const routes: Routes = [
       import('./pages/tuteur/tuteur.component').then((m) => m.TuteurComponent),
   },
   {
+    path: 'tuteur/id',
+    loadComponent: () =>
+      import('./pages/tuteur/see-tutor/see-tutor.component').then((m) => m.SeeTutorComponent),
+  },
+  {
     path: 'statistique',
     loadComponent: () =>
       import('./pages/statistique/statistique.component').then(
@@ -91,6 +96,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/liste-utilisateurs/liste-utilisateurs.component').then(
         (m) => m.ListeUtilisateursComponent
+      ),
+  },
+  {
+    path: 'liste-utilisateurs/id',
+    loadComponent: () =>
+      import('./pages/liste-utilisateurs/voir-utilisateur/voir-utilisateur.component').then(
+        (m) => m.VoirUtilisateurComponent
       ),
   },
   {

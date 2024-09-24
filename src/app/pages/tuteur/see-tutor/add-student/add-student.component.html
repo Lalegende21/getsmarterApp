@@ -1,0 +1,31 @@
+<form [formGroup]="addStudentToTutorForm" (ngSubmit)="addStudentToTutor()">
+  <mat-card>
+    <mat-card-header>
+      <h1>Ajouter un etudiant au tuteur</h1>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Validation du champ etudiant  -->
+      <div>
+        <mat-form-field>
+          <mat-label>Rechercher un étudiant</mat-label>
+          <i class="fas fa-search"></i>
+          <input matInput (keyup)="filterStudents($event)" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Etudiant</mat-label>
+          <mat-select formControlName="student">
+            <mat-option *ngFor="let item of filteredStudents" [value]="item">
+              <!-- {{ item.firstname + " " + item.lastname }} -->
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <div class="button">
+      <button type="submit">Enregistrer</button>
+      <button (click)="closePopup()">Annuler</button>
+    </div>
+  </mat-card>
+</form>

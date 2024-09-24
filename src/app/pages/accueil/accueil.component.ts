@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +12,8 @@ Chart.register(...registerables);
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.scss',
 })
-export class AccueilComponent implements OnInit {
+export class AccueilComponent implements AfterViewInit {
+  private cdr = inject(ChangeDetectorRef);
   
   public config: any = {
     type: 'bar',
@@ -21,23 +22,24 @@ export class AccueilComponent implements OnInit {
       datasets: [
         {
           label: 'Sales',
-          // barThickness: 10,
-          date: ['100', '80', '125', '45', '200', '34', '25', '67', '15', '29', '86', '67'],
+          data: [100, 80, 125, 45, 200, 34, 25, 67, 15, 29, 86, 67], // Utilisez "data" au lieu de "date"
           backgroundColor: 'blue',
         },
         {
           label: 'PAT',
-          // barThickness: 10,
-          date: ['80', '100', '75', '65', '150', '100', '80', '125', '45', '200', '34', '25'],
-          backgroundColor: 'red',
+          data: [80, 100, 75, 65, 150, 100, 80, 125, 45, 200, 34, 25], // Utilisez "data" au lieu de "date"
+          backgroundColor: '#f5d333',
         },
       ],
     },
   };
   
+  
   chart: any;
-  ngOnInit(): void {
+
+  ngAfterViewInit(): void {
     this.chart = new Chart('MyChart', this.config);
+    this.cdr.detectChanges(); // Pour forcer le recalcul du charte à la fin du cycle de vie
   }
 
 }

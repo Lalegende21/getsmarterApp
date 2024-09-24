@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AddButttonComponent } from '../../components/add-buttton/add-buttton.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProfessorComponent } from './add-professor/add-professor.component';
 import { UpdateProfessorComponent } from './update-professor/update-professor.component';
 import { Router } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-professeur',
@@ -14,10 +15,25 @@ import { Router } from '@angular/router';
   templateUrl: './professeur.component.html',
   styleUrl: './professeur.component.scss',
 })
-export class ProfesseurComponent {
+export class ProfesseurComponent implements OnInit {
   isModalVisible: boolean[] = [false, false, false, false, false];
+  width!: string;
 
-  constructor(private dialog: MatDialog, private route: Router) {}
+  private dialog = inject(MatDialog);
+  private route = inject(Router);
+  private breakPointObserver = inject(BreakpointObserver);
+
+  ngOnInit(): void {
+    this.breakPointObserver
+      .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.width = '30%';
+        } else {
+          this.width = '80%';
+        }
+      });
+  }
 
   toggleModal(index: number, event: Event) {
     event.stopPropagation();
@@ -44,7 +60,7 @@ export class ProfesseurComponent {
 
   //Methode pour afficher les informations du professeur
   consulterProfessor() {
-    this.route.navigateByUrl("professeur/id");
+    this.route.navigateByUrl('professeur/id');
   }
 
   //Methode pour ouvrir le modal d'ajout d'un professeur
@@ -52,7 +68,7 @@ export class ProfesseurComponent {
     this.dialog.open(AddProfessorComponent, {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '300ms',
-      width: '30%',
+      width: this.width,
     });
   }
 
@@ -61,7 +77,7 @@ export class ProfesseurComponent {
     this.dialog.open(UpdateProfessorComponent, {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '300ms',
-      width: '30%',
+      width: this.width,
     });
   }
 }

@@ -1,12 +1,81 @@
-import { Component } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
+import { UpdateTutorComponent } from './update-tutor/update-tutor.component';
+import { AddButttonComponent } from '../../components/add-buttton/add-buttton.component';
+import { AddTutorComponent } from './add-tutor/add-tutor.component';
 
 @Component({
   selector: 'app-tuteur',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, MatIconModule, AddButttonComponent],
   templateUrl: './tuteur.component.html',
-  styleUrl: './tuteur.component.scss'
+  styleUrl: './tuteur.component.scss',
 })
-export class TuteurComponent {
+export class TuteurComponent implements OnInit {
+  isModalVisible: boolean[] = [false, false, false, false, false];
+  width!: string;
 
+  private dialog = inject(MatDialog);
+  private route = inject(Router);
+  private breakPointObserver = inject(BreakpointObserver);
+
+  ngOnInit(): void {
+    this.breakPointObserver
+      .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.width = '30%';
+        } else {
+          this.width = '80%';
+        }
+      });
+  }
+
+  toggleModal(index: number, event: Event) {
+    event.stopPropagation();
+    this.isModalVisible = this.isModalVisible.map((visible, i) =>
+      i === index ? !visible : false
+    );
+  }
+
+  onOptionSelected(index: number, event: Event) {
+    event.stopPropagation(); // Empêche la propagation du clic
+    this.isModalVisible[index] = false; // Ferme le modal correspondant
+    console.log('Option sélectionnée dans le modal', index);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+
+    // Fermez tous les modals si le clic est en dehors d'un modal et d'un bouton
+    if (!target.closest('.modal') && !target.closest('.more-icon')) {
+      this.isModalVisible = [false, false, false, false, false];
+    }
+  }
+
+  consulterProfessor() {
+    this.route.navigateByUrl('tuteur/id');
+  }
+
+  addTutor() {
+    this.dialog.open(AddTutorComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '300ms',
+      width: this.width,
+    });
+  }
+
+  //Methode pour ouvrir le modal de modification d'un tuteur
+  updateProfessor() {
+    this.dialog.open(UpdateTutorComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '300ms',
+      width: this.width,
+    });
+  }
 }

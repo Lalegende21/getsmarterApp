@@ -1,21 +1,37 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-liste-utilisateurs',
+  selector: 'app-see-tutor',
   standalone: true,
   imports: [CommonModule, MatIconModule],
-  templateUrl: './liste-utilisateurs.component.html',
-  styleUrl: './liste-utilisateurs.component.scss',
+  templateUrl: './see-tutor.component.html',
+  styleUrl: './see-tutor.component.scss',
 })
-export class ListeUtilisateursComponent {
+export class SeeTutorComponent implements OnInit {
   isModalVisible: boolean[] = [false, false, false, false, false];
+  width!: string;
 
   private dialog = inject(MatDialog);
-  private route = inject(Router);
+  private breakPointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
+
+  ngOnInit(): void {
+    this.breakPointObserver
+      .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.width = '30%';
+        } else {
+          this.width = '80%';
+        }
+      });
+  }
 
   toggleModal(index: number, event: Event) {
     event.stopPropagation();
@@ -40,9 +56,17 @@ export class ListeUtilisateursComponent {
     }
   }
 
-  //Methode pour afficher les informations du professeur
-  consulterProfessor() {
-    this.route.navigateByUrl('liste-utilisateurs/id');
+  //Methode pour ouvrir le modal d'ajout d'un student
+  addStudentToTutor() {
+    this.dialog.open(AddStudentComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '300ms',
+      width: this.width,
+    });
   }
 
+  //Methode pour revenir sur la page precedente
+  backPage() {
+    this.router.navigateByUrl('tuteur');
+  }
 }

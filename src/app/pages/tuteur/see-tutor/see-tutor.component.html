@@ -1,0 +1,257 @@
+<section>
+  <div class="container">
+    <div class="tutor">
+      <div class="img">
+        <div class="image">
+          <img
+            src="../../../../assets/images/tutor_male.png"
+            alt="tutor_male.png"
+          />
+        </div>
+        <button>
+          <mat-icon>cloud_upload</mat-icon>
+          <span>Modifier</span>
+        </button>
+      </div>
+      <div class="subheading">
+        <div>
+          <p>
+            <mat-icon>sort_by_alpha</mat-icon>
+            <span>Nom complet</span>
+          </p>
+          <h4>Ambang Ricky</h4>
+        </div>
+        <div>
+          <p>
+            <mat-icon>alternate_email</mat-icon>
+            <span>email</span>
+          </p>
+          <h4>ambangricky&commat;.com</h4>
+        </div>
+        <div>
+          <p>
+            <mat-icon>phone_in_talk</mat-icon>
+            <span>Numéro téléphone</span>
+          </p>
+          <h4>+237 674897552</h4>
+        </div>
+        <div>
+          <p>
+            <mat-icon>male</mat-icon>
+            <span>gender</span>
+          </p>
+          <h4>Homme</h4>
+        </div>
+        <div>
+          <p>
+            <mat-icon>manage_accounts</mat-icon>
+            <span>type tuteur</span>
+          </p>
+          <h4>Parent</h4>
+        </div>
+      </div>
+    </div>
+    <div class="student">
+      <div class="heading">
+        <div>
+          <h4>etudiants parrainés</h4>
+          <span class="getsmarter-prof">Liste des étudiants</span>
+        </div>
+        <button (click)="addStudentToTutor()">
+          <mat-icon>edit</mat-icon>
+          <span>Ajouter</span>
+        </button>
+      </div>
+      <div class="cards">
+        <table>
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Nom</th>
+              <th>Session</th>
+              <th>Spécialité</th>
+              <th class="date-enregistrement">Date d'enregistrement</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="startDate">
+                <span
+                  ><img
+                    src="../../../assets/images/unnamed.jpg"
+                    alt="unnamed.jpg" /></span
+                ><span>John Doe</span>
+              </td>
+              <td>Juillet 2024</td>
+              <td>Fullstack JavaScript</td>
+              <td class="date-enregistrement">25 Mars 2024</td>
+              <td class="more">
+                <button class="more-icon" (click)="toggleModal(0, $event)">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <div
+                  class="modal"
+                  [ngClass]="{ show: isModalVisible[0] }"
+                  (click)="$event.stopPropagation()"
+                >
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/eye-svgrepo-com.svg"
+                        alt="eye-svgrepo-com.svg"
+                      />
+                      <span class="see">Consulter</span>
+                    </button>
+                  </div>
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/delete-svgrepo-com.svg"
+                        alt="delete-svgrepo-com.svg"
+                      />
+                      <span class="delete">Supprimer</span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td class="startDate">
+                <span
+                  ><img
+                    src="../../../assets/images/unnamed.jpg"
+                    alt="unnamed.jpg" /></span
+                ><span>John Doe</span>
+              </td>
+              <td>Juillet 2024</td>
+              <td>Fullstack JavaScript</td>
+              <td class="date-enregistrement">25 Mars 2024</td>
+              <td class="more">
+                <button class="more-icon" (click)="toggleModal(1, $event)">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <div
+                  class="modal"
+                  [ngClass]="{ show: isModalVisible[1] }"
+                  (click)="$event.stopPropagation()"
+                >
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/eye-svgrepo-com.svg"
+                        alt="eye-svgrepo-com.svg"
+                      />
+                      <span class="see">Consulter</span>
+                    </button>
+                  </div>
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/delete-svgrepo-com.svg"
+                        alt="delete-svgrepo-com.svg"
+                      />
+                      <span class="delete">Supprimer</span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td class="startDate">
+                <span
+                  ><img
+                    src="../../../assets/images/unnamed.jpg"
+                    alt="unnamed.jpg" /></span
+                ><span>John Doe</span>
+              </td>
+              <td>Juillet 2024</td>
+              <td>Fullstack JavaScript</td>
+              <td class="date-enregistrement">25 Mars 2024</td>
+              <td class="more">
+                <button class="more-icon" (click)="toggleModal(2, $event)">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <div
+                  class="modal"
+                  [ngClass]="{ show: isModalVisible[2] }"
+                  (click)="$event.stopPropagation()"
+                >
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/eye-svgrepo-com.svg"
+                        alt="eye-svgrepo-com.svg"
+                      />
+                      <span class="see">Consulter</span>
+                    </button>
+                  </div>
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/delete-svgrepo-com.svg"
+                        alt="delete-svgrepo-com.svg"
+                      />
+                      <span class="delete">Supprimer</span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td class="startDate">
+                <span
+                  ><img
+                    src="../../../assets/images/unnamed.jpg"
+                    alt="unnamed.jpg" /></span
+                ><span>John Doe</span>
+              </td>
+              <td>Juillet 2024</td>
+              <td>Fullstack JavaScript</td>
+              <td class="date-enregistrement">25 Mars 2024</td>
+              <td class="more">
+                <button class="more-icon" (click)="toggleModal(3, $event)">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <div
+                  class="modal"
+                  [ngClass]="{ show: isModalVisible[3] }"
+                  (click)="$event.stopPropagation()"
+                >
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/eye-svgrepo-com.svg"
+                        alt="eye-svgrepo-com.svg"
+                      />
+                      <span class="see">Consulter</span>
+                    </button>
+                  </div>
+                  <div class="text">
+                    <button>
+                      <img
+                        src="../../../assets/images/delete-svgrepo-com.svg"
+                        alt="delete-svgrepo-com.svg"
+                      />
+                      <span class="delete">Supprimer</span>
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="back">
+    <button (click)="backPage()">
+      <mat-icon>west</mat-icon>
+    </button>
+  </div>
+</section>
