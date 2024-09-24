@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { AddButttonComponent } from '../../components/add-buttton/add-buttton.component';
 import { AddCampusComponent } from './add-campus/add-campus.component';
 import { UpdateCampusComponent } from './update-campus/update-campus.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-campus',
@@ -13,10 +14,24 @@ import { UpdateCampusComponent } from './update-campus/update-campus.component';
   templateUrl: './campus.component.html',
   styleUrl: './campus.component.scss',
 })
-export class CampusComponent {
+export class CampusComponent implements OnInit {
   isModalVisible: boolean[] = [false, false, false];
+  width!: string;
 
-  constructor(private dialog: MatDialog) {}
+  private dialog = inject(MatDialog);
+  private breakPointObserver = inject(BreakpointObserver);
+
+  ngOnInit(): void {
+    this.breakPointObserver
+      .observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+      .subscribe((result) => {
+        if (result.matches) {
+          this.width = '30%';
+        } else {
+          this.width = '80%';
+        }
+      });
+  }
 
   toggleModal(index: number, event: Event) {
     event.stopPropagation();
@@ -46,7 +61,7 @@ export class CampusComponent {
     this.dialog.open(AddCampusComponent, {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '300ms',
-      width: '30%',
+      width: this.width,
     });
   }
 
@@ -55,7 +70,7 @@ export class CampusComponent {
     this.dialog.open(UpdateCampusComponent, {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '300ms',
-      width: '30%',
+      width: this.width,
     });
   }
 }

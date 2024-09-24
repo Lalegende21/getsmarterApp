@@ -1,0 +1,55 @@
+<form [formGroup]="updateCourseForm" (ngSubmit)="updateCourse()">
+  <mat-card>
+    <mat-card-header>
+      <h1>Modifier cette matière</h1>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Validation du champ nom  -->
+      <div>
+        <mat-form-field>
+          <mat-label>Nom</mat-label>
+          <input formControlName="name" matInput placeholder="Javascript" />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field floatLabel="always">
+          <mat-label>Durée</mat-label>
+          <input
+            formControlName="dureeCourse"
+            matInput
+            type="number"
+            class="example-right-align"
+            placeholder="0"
+          />
+          <span matTextSuffix>semaine(s)</span>
+        </mat-form-field>
+      </div>
+
+      <!-- Validation du champ professor  -->
+      <div>
+        <mat-form-field>
+          <mat-label>Rechercher un professeur</mat-label>
+          <i class="fas fa-search"></i>
+          <input matInput (keyup)="filterProfessors($event)" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Professeur</mat-label>
+          <mat-select formControlName="professor">
+            <!-- <mat-option
+                *ngFor="let item of filteredProfessors"
+                [value]="item"
+                >{{ item.fullName }}</mat-option
+              > -->
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+
+    <div class="button">
+      <button type="submit">Enregistrer</button>
+      <button (click)="closePopup()">Annuler</button>
+    </div>
+  </mat-card>
+</form>

@@ -1,1 +1,377 @@
-<p>matiere works!</p>
+<section>
+  <!-- start section1  -->
+  <div class="first-section">
+    <h1>matière</h1>
+    <div class="second-bloc">
+      <div class="card">
+        <div class="title">
+          <div>
+            <p>6</p>
+            <h2>matières totales</h2>
+          </div>
+          <span><mat-icon>book</mat-icon></span>
+        </div>
+        <p>Session de mars 2023</p>
+      </div>
+      <div class="card">
+        <div class="title">
+          <div>
+            <p>2</p>
+            <h2>matières ajoutées recemment</h2>
+          </div>
+          <span><mat-icon>book</mat-icon></span>
+        </div>
+        <p>Session de mars 2023</p>
+      </div>
+      <div class="card">
+        <div class="title">
+          <div>
+            <p>4</p>
+            <h2>matière avec la plus grande durée</h2>
+          </div>
+          <span><mat-icon>book</mat-icon></span>
+        </div>
+        <p>Session de mars 2023</p>
+      </div>
+      <div class="card">
+        <div class="title">
+          <div>
+            <p>2</p>
+            <h2>matière avec la plus courte durée</h2>
+          </div>
+          <span><mat-icon>book</mat-icon></span>
+        </div>
+        <p>Session de mars 2023</p>
+      </div>
+    </div>
+  </div>
+  <!-- end section1  -->
+
+  <!-- start section2  -->
+  <div class="second-section">
+    <div class="sort">
+      <h2>Rechercher par:</h2>
+
+      <!-- all options  -->
+      <div class="options">
+        <!-- first option  -->
+        <input type="checkbox" name="#" id="check" />
+        <div class="option">
+          <div class="label1">
+            <label for="check"
+              ><mat-icon>sort_by_alpha</mat-icon><span>Nom</span></label
+            >
+          </div>
+          <div class="input1">
+            <div>
+              <mat-icon>search</mat-icon>
+              <input type="search" name="#" id="#" placeholder="Nom..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- second option  -->
+        <input type="checkbox" name="#" id="check2" />
+        <div class="option">
+          <div class="label2">
+            <label for="check2"
+              ><mat-icon>timer</mat-icon><span>Durée de cours</span></label
+            >
+          </div>
+          <div class="input2">
+            <div>
+              <mat-icon>search</mat-icon>
+              <input
+                type="search"
+                name="#"
+                id="input2"
+                placeholder="Durée de cours..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- table of session -->
+    <div class="cards">
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nom</th>
+            <th>Durée de cours</th>
+            <th>Data d'enregistrement</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td class="startDate">
+              <span
+                ><img
+                  src="../../../assets/images/unnamed.jpg"
+                  alt="unnamed.jpg" /></span
+              ><span>JavaScript</span>
+            </td>
+            <td>4 semaine(s)</td>
+            <td>25 Mars 2024</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(0, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[0] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="updateMatiere()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(0, $event)">
+                    <img
+                      src="../../../assets/images/image-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="image">Inserer image</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(0, $event)">
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td class="startDate">
+              <span
+                ><img
+                  src="../../../assets/images/unnamed.jpg"
+                  alt="unnamed.jpg" /></span
+              ><span>JavaScript</span>
+            </td>
+            <td>4 semaine(s)</td>
+            <td>25 Mars 2024</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(1, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[1] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="updateMatiere()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(1, $event)">
+                    <img
+                      src="../../../assets/images/image-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="image">Inserer image</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(0, $event)">
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td class="startDate">
+              <span
+                ><img
+                  src="../../../assets/images/unnamed.jpg"
+                  alt="unnamed.jpg" /></span
+              ><span>JavaScript</span>
+            </td>
+            <td>4 semaine(s)</td>
+            <td>25 Mars 2024</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(2, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[2] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="updateMatiere()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(2, $event)">
+                    <img
+                      src="../../../assets/images/image-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="image">Inserer image</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(0, $event)">
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td class="startDate">
+              <span
+                ><img
+                  src="../../../assets/images/unnamed.jpg"
+                  alt="unnamed.jpg" /></span
+              ><span>JavaScript</span>
+            </td>
+            <td>4 semaine(s)</td>
+            <td>25 Mars 2024</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(3, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[3] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="updateMatiere()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(3, $event)">
+                    <img
+                      src="../../../assets/images/image-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="image">Inserer image</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(0, $event)">
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td class="startDate">
+              <span
+                ><img
+                  src="../../../assets/images/unnamed.jpg"
+                  alt="unnamed.jpg" /></span
+              ><span>JavaScript</span>
+            </td>
+            <td>4 semaine(s)</td>
+            <td>25 Mars 2024</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(4, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[4] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="updateMatiere()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(4, $event)">
+                    <img
+                      src="../../../assets/images/image-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="image">Inserer image</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="onOptionSelected(0, $event)">
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- pagination  -->
+    <div class="pagination">
+      <button><mat-icon>arrow_back_ios</mat-icon></button>
+      <button class="focus">1</button>
+      <button><mat-icon>arrow_forward_ios</mat-icon></button>
+    </div>
+  </div>
+  <!-- end section2  -->
+
+  <!-- add button session  -->
+  <app-add-buttton
+    [buttonText]="'Ajouter une matière'"
+    (click)="addMatiere()"
+  ></app-add-buttton>
+</section>

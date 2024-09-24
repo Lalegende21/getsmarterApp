@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { AddButttonComponent } from '../../components/add-buttton/add-buttton.component';
@@ -16,7 +16,7 @@ import { UpdateSessionComponent } from './update-session/update-session.componen
 export class SessionComponent {
   isModalVisible: boolean[] = [false, false, false, false, false];
 
-  constructor(private dialog: MatDialog) {}
+  private dialog = inject(MatDialog);
 
   toggleModal(index: number, event: Event) {
     event.stopPropagation();

@@ -4,7 +4,6 @@ mat-card {
   padding: 2rem;
   max-height: 70vh;
   overflow: auto;
-  position: relative;
 
   mat-card-header {
     h1 {
@@ -18,7 +17,10 @@ mat-card {
   }
 
   mat-card-content {
-    margin-bottom: 3rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 2rem;
+    margin-bottom: 2rem;
 
     mat-form-field {
       width: 100%;
