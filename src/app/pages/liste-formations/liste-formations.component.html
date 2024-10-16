@@ -1,0 +1,171 @@
+<section>
+  <div class="student">
+    <div class="heading">
+      <div>
+        <h4>Liste formations</h4>
+        <span class="getsmarter-prof">Liste des formations</span>
+      </div>
+      <button (click)="addFormation()">
+        <mat-icon>edit</mat-icon>
+        <span>Ajouter</span>
+      </button>
+    </div>
+    <div class="cards">
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Spécialité</th>
+            <th>Code</th>
+            <th>Durée</th>
+            <th>Montant</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td class="startDate">Fullstack Java</td>
+            <td>DM</td>
+            <td>12 mois</td>
+            <td>500000 XAF</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(0, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[0] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="consulterFormation()">
+                    <img
+                      src="../../../assets/images/eye-svgrepo-com.svg"
+                      alt="eye-svgrepo-com.svg"
+                    />
+                    <span class="see">Consulter</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="updateFormation()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button>
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td class="startDate">Fullstack Java</td>
+            <td>DM</td>
+            <td>12 mois</td>
+            <td>500000 XAF</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(1, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[1] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="consulterFormation()">
+                    <img
+                      src="../../../assets/images/eye-svgrepo-com.svg"
+                      alt="eye-svgrepo-com.svg"
+                    />
+                    <span class="see">Consulter</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="updateFormation()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button>
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td class="startDate">Fullstack Java</td>
+            <td>DM</td>
+            <td>12 mois</td>
+            <td>500000 XAF</td>
+            <td class="more">
+              <button class="more-icon" (click)="toggleModal(2, $event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <div
+                class="modal"
+                [ngClass]="{ show: isModalVisible[2] }"
+                (click)="$event.stopPropagation()"
+              >
+                <div class="text">
+                  <button (click)="consulterFormation()">
+                    <img
+                      src="../../../assets/images/eye-svgrepo-com.svg"
+                      alt="eye-svgrepo-com.svg"
+                    />
+                    <span class="see">Consulter</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button (click)="updateFormation()">
+                    <img
+                      src="../../../assets/images/write-svgrepo-com.svg"
+                      alt="write-svgrepo-com.svg"
+                    />
+                    <span class="update">Modifier</span>
+                  </button>
+                </div>
+                <div class="text">
+                  <button>
+                    <img
+                      src="../../../assets/images/delete-svgrepo-com.svg"
+                      alt="delete-svgrepo-com.svg"
+                    />
+                    <span class="delete">Supprimer</span>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- pagination  -->
+  <div class="pagination">
+    <button><mat-icon>arrow_back_ios</mat-icon></button>
+    <button class="focus">1</button>
+    <button><mat-icon>arrow_forward_ios</mat-icon></button>
+  </div>
+</section>

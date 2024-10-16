@@ -42,7 +42,7 @@ export class ListeUtilisateursComponent {
 
   //Methode pour afficher les informations du professeur
   consulterProfessor() {
-    this.route.navigateByUrl('liste-utilisateurs/id');
+    this.route.navigateByUrl('/dashboard/liste-utilisateurs/id');
   }
 
 }

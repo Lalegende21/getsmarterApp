@@ -60,7 +60,7 @@ export class ProfesseurComponent implements OnInit {
 
   //Methode pour afficher les informations du professeur
   consulterProfessor() {
-    this.route.navigateByUrl('professeur/id');
+    this.route.navigateByUrl('/dashboard/professeur/id');
   }
 
   //Methode pour ouvrir le modal d'ajout d'un professeur

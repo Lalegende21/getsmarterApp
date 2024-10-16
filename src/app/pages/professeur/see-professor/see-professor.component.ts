@@ -37,7 +37,7 @@ export class SeeProfessorComponent implements OnInit {
   
   //Methode pour revenir sur la page precedente
   backPage() {
-    this.router.navigateByUrl('professeur');
+    this.router.navigateByUrl('/dashboard/professeur');
   }
 
 

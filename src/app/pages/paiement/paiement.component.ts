@@ -1,12 +1,46 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paiement',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './paiement.component.html',
-  styleUrl: './paiement.component.scss'
+  styleUrl: './paiement.component.scss',
 })
-export class PaiementComponent {
+export class PaiementComponent implements OnInit {
+  ngOnInit(): void {}
+  
+  isModalVisible: boolean[] = [false, false, false, false, false];
+  private route = inject(Router); // Associe le composant à la route Angular
 
+  toggleModal(index: number, event: Event) {
+    event.stopPropagation();
+    this.isModalVisible = this.isModalVisible.map((visible, i) =>
+      i === index ? !visible : false
+    );
+  }
+
+  onOptionSelected(index: number, event: Event) {
+    event.stopPropagation(); // Empêche la propagation du clic
+    this.isModalVisible[index] = false; // Ferme le modal correspondant
+    console.log('Option sélectionnée dans le modal', index);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+
+    // Fermez tous les modals si le clic est en dehors d'un modal et d'un bouton
+    if (!target.closest('.modal') && !target.closest('.more-icon')) {
+      this.isModalVisible = [false, false, false, false, false];
+    }
+  }
+
+  //Methode pour afficher les informations du professeur
+  consulterPaiement() {
+    this.route.navigateByUrl('/dashboard/paiement/id');
+  }
 }

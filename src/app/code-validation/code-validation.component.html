@@ -1,0 +1,61 @@
+<section>
+  <div class="container">
+    <div class="left-side">
+      <div class="content">
+        <div class="title">
+          <img src="../../assets/images/icon-site.png" alt="icon-site.png" />
+          <h1>get<span>smarter</span></h1>
+        </div>
+        <h2>Code d'activation du compte</h2>
+        <p class="welcome">Renseignez le code afin d'activation</p>
+        <form [formGroup]="codeActivationForm" (ngSubmit)="confirm()">
+          <!-- email field  -->
+          <div class="code">
+            <mat-form-field appearance="outline">
+              <mat-label>Code d'activation</mat-label>
+              <input formControlName="code" matInput placeholder="123456" />
+              <mat-icon matIconPrefix>123</mat-icon>
+            </mat-form-field>
+            <span
+              class="error"
+              *ngIf="
+                codeActivationForm.hasError('required', 'code') &&
+                codeActivationForm.controls['code'].touched
+              "
+              >Le code d'activation est obligatoire !</span
+            >
+            <span
+              class="error"
+              *ngIf="
+                codeActivationForm.hasError('pattern', 'code') &&
+                codeActivationForm.controls['code'].touched
+              "
+              >Le code d'activation ne doit contenir que des chiffres !</span
+            >
+            <span
+              class="error"
+              *ngIf="
+                codeActivationForm.hasError('pattern', 'code') &&
+                codeActivationForm.controls['code'].touched
+              "
+              >Le code d'activation doit contenir exactement 6 chiffres !</span
+            >
+          </div>
+          <button class="submit" type="submit">valider</button>
+        </form>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="image">
+        <img
+          src="../../assets/images/forgot-the-password.webp"
+          alt="forgot-the-password.webp"
+        />
+      </div>
+
+      <p>
+        Votre code d'activation vous permet d'activer votre compte utiisateur.
+      </p>
+    </div>
+  </div>
+</section>

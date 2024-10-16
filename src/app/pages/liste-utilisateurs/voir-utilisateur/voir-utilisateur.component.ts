@@ -14,7 +14,7 @@ export class VoirUtilisateurComponent {
   private router = inject(Router);
   //Methode pour revenir sur la page precedente
   backPage() {
-    this.router.navigateByUrl('liste-utilisateurs');
+    this.router.navigateByUrl('/dashboard/liste-utilisateurs');
   }
 
 

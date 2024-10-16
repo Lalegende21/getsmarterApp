@@ -59,7 +59,7 @@ export class TuteurComponent implements OnInit {
   }
 
   consulterProfessor() {
-    this.route.navigateByUrl('tuteur/id');
+    this.route.navigateByUrl('/dashboard/tuteur/id');
   }
 
   addTutor() {

@@ -67,6 +67,6 @@ export class SeeTutorComponent implements OnInit {
 
   //Methode pour revenir sur la page precedente
   backPage() {
-    this.router.navigateByUrl('tuteur');
+    this.router.navigateByUrl('/dashboard/tuteur');
   }
 }
