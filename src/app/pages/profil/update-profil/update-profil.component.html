@@ -1,0 +1,205 @@
+<!-------------------------------------- formulaire -------------------------------------------->
+<form [formGroup]="updateProfilForm" (ngSubmit)="updateProfil()">
+  <mat-card>
+    <mat-card-header>
+      <h1>Modifier vos informations</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="champ">
+        <!-- Validation du nom  -->
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input formControlName="firstname" matInput placeholder="John" />
+          </mat-form-field>
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('required', 'firstname') &&
+                      updateProfilForm.controls['firstname'].touched
+                    "
+                    >Le nom est obligatoire !</span
+                  >
+                  <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('minlength', 'firstname') &&
+                      updateProfilForm.controls['firstname'].touched
+                    "
+                    >Le nom doit avoir minimum 3 caractères !</span
+                  > -->
+        </div>
+
+        <!-- Validation du prenom  -->
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Prenom</mat-label>
+            <input formControlName="lastname" matInput placeholder="Doe" />
+          </mat-form-field>
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('required', 'lastname') &&
+                      updateProfilForm.controls['lastname'].touched
+                    "
+                    >Le prénom est obligatoire !</span
+                  >
+                  <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('minlength', 'lastname') &&
+                      updateProfilForm.controls['lastname'].touched
+                    "
+                    >Le prénom doit avoir minimum 3 caractères !</span
+                  > -->
+        </div>
+
+        <!-- Validation de l'email  -->
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              formControlName="email"
+              matInput
+              placeholder="Exemple@gmail.com"
+            />
+          </mat-form-field>
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('required', 'email') &&
+                      updateProfilForm.controls['email'].touched
+                    "
+                    >L'email est obligatoire !</span
+                  >
+                  <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('pattern', 'email') &&
+                      updateProfilForm.controls['email'].touched
+                    "
+                  >
+                    L'email est invalide !
+                  </span> -->
+        </div>
+
+        <!-- Validation numero de telephone -->
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Numéro de téléphone</mat-label>
+            <input
+              formControlName="phonenumber"
+              matInput
+              placeholder="653432424"
+            />
+          </mat-form-field>
+          <!-- <span
+            class="error"
+            *ngIf="
+              updateProfilForm.hasError('required', 'phonenumber') &&
+              updateProfilForm.controls['phonenumber'].touched
+            "
+            >Le numéro de téléphone est obligatoire !</span
+          > -->
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('pattern', 'phonenumber') &&
+                      updateProfilForm.controls['phonenumber'].touched
+                    "
+                    >Le numéro de téléphone ne doit contenir que des chiffres !</span
+                  >
+                  <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('pattern', 'phonenumber') &&
+                      updateProfilForm.controls['phonenumber'].touched
+                    "
+                    >Le numéro de téléphone doit contenir au minimum 9 chiffres !</span
+                  > -->
+        </div>
+
+        <!-- Validation de la date de naissance -->
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input formControlName="dob" matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('required', 'dob') &&
+                      updateProfilForm.controls['dob'].touched
+                    "
+                    >La date de naissance est obligatoire !</span
+                  > -->
+        </div>
+
+        <!-- validation du champ pays -->
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Pays</mat-label>
+            <input formControlName="country" matInput placeholder="Cameroun" />
+          </mat-form-field>
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('required', 'country') &&
+                      updateProfilForm.controls['country'].touched
+                    "
+                    >Le pays est obligatoire !</span
+                  > -->
+        </div>
+
+        <!-- validation du champ ville -->
+        <div class="form-data">
+          <mat-form-field appearance="outline">
+            <mat-label>Ville</mat-label>
+            <input formControlName="city" matInput placeholder="Douala" />
+          </mat-form-field>
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('required', 'city') &&
+                      updateProfilForm.controls['city'].touched
+                    "
+                    >La ville est obligatoire !</span
+                  > -->
+        </div>
+
+        <!-- Vaidation du genre  -->
+        <div class="form-data gender">
+          <mat-form-field appearance="outline">
+            <mat-label>Genre</mat-label>
+            <mat-select formControlName="sexe">
+              @for (genders of gender; track genders) {
+              <mat-option [value]="genders.value">{{
+                genders.viewValue
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <!-- <span
+                    class="error"
+                    *ngIf="
+                      updateProfilForm.hasError('required', 'sexe') &&
+                      updateProfilForm.controls['sexe'].touched
+                    "
+                    >Le genre est obligatoire !</span
+                  > -->
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="buttons">
+        <button (click)="close()">Annuler</button>
+        <button type="submit">Enregistrer</button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</form>

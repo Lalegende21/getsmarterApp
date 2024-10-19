@@ -1,7 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,6 +16,7 @@ import {
   NavigationEnd,
 } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { filter } from 'rxjs';
 
 @Component({
@@ -34,6 +35,7 @@ import { filter } from 'rxjs';
     HttpClientModule,
     MatTooltipModule,
     TranslateModule,
+    NgxSpinnerModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -45,11 +47,10 @@ export class DashboardComponent implements OnInit {
 
   isLoading = true;
 
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private translate: TranslateService,
-    private router: Router
-  ) {}
+  private breakpointObserver = inject(BreakpointObserver);
+  private translate = inject(TranslateService);
+  private router = inject(Router);
+  private spinner = inject(NgxSpinnerService);
 
   changeLang(selectedLang: string) {
     this.translate.use(selectedLang);
@@ -79,6 +80,12 @@ export class DashboardComponent implements OnInit {
             });
         }
       });
+
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide(); // Cache le spinner lorsque les données sont chargées
+    }, 5000);
   }
 
   //Gerer le basculement de la sidenav du dashboard

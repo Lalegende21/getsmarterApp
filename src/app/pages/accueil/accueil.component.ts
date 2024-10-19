@@ -1,6 +1,15 @@
-import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
-import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
+import {
+  MatNativeDateModule,
+  provideNativeDateAdapter,
+} from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
@@ -8,17 +17,35 @@ Chart.register(...registerables);
   selector: 'app-accueil',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [MatIconModule, MatNativeDateModule, MatDatepickerModule],
+  imports: [
+    MatIconModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+  ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.scss',
 })
 export class AccueilComponent implements AfterViewInit {
+  chart: any;
+
   private cdr = inject(ChangeDetectorRef);
-  
+
   public config: any = {
     type: 'bar',
     data: {
-      labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+      labels: [
+        'JAN',
+        'FEB',
+        'MAR',
+        'APR',
+        'MAY',
+        'JUNE',
+        'AUG',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DEC',
+      ],
       datasets: [
         {
           label: 'Sales',
@@ -33,13 +60,9 @@ export class AccueilComponent implements AfterViewInit {
       ],
     },
   };
-  
-  
-  chart: any;
 
   ngAfterViewInit(): void {
     this.chart = new Chart('MyChart', this.config);
     this.cdr.detectChanges(); // Pour forcer le recalcul du charte à la fin du cycle de vie
   }
-
 }

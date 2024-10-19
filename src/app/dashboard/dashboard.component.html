@@ -50,12 +50,12 @@
         (click)="$event.stopPropagation()"
       >
         <li (click)="onOptionSelected($event)">
-          <a routerLink="/profil"
+          <a routerLink="/dashboard/profil"
             ><mat-icon>person</mat-icon><span>Profil</span></a
           >
         </li>
         <li (click)="onOptionSelected($event)">
-          <a routerLink="/profil"
+          <a routerLink="/dashboard/parametres"
             ><mat-icon>settings</mat-icon><span>Paramètres</span></a
           >
         </li>
@@ -63,6 +63,8 @@
           <mat-icon>logout</mat-icon><span>Deconnexion</span>
         </button>
       </ul>
+
+      <span class="online"></span>
     </div>
   </div>
 </mat-toolbar>
@@ -148,3 +150,4 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<ngx-spinner></ngx-spinner>

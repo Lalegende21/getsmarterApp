@@ -50,6 +50,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'parametres',
+        loadComponent: () =>
+          import('./pages/parametres/parametres.component').then(
+            (m) => m.ParametresComponent
+          ),
+      },
+      {
         path: 'accueil',
         loadComponent: () =>
           import('./pages/accueil/accueil.component').then(
@@ -198,7 +205,7 @@ export const routes: Routes = [
       },
     ],
   },
-  
+
   {
     path: '**',
     loadComponent: () =>
